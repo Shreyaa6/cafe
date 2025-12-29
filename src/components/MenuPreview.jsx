@@ -1,24 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import './MenuPreview.css';
 
 const MenuPreview = () => {
-    const menuCategories = [
+    const categories = [
         {
-            title: "Espresso Bar",
+            title: "Signature Brews",
             items: [
-                { name: "Doppio", price: "$4.00", desc: "Double shot espresso" },
-                { name: "Cortado", price: "$4.50", desc: "Equal parts espresso and warm milk" },
-                { name: "Flat White", price: "$5.00", desc: "Silky microfoam over espresso" },
-                { name: "Mocha Noir", price: "$6.00", desc: "Dark chocolate, espresso, steamed milk" },
+                { name: "Velvet Espresso", desc: "Double shot with a hint of cocoa nibs", price: "$4.50" },
+                { name: "Golden Latte", desc: "Turmeric, honey, almond milk, cinnamon", price: "$5.50" },
+                { name: "Maple Cortado", desc: "Espresso cut with maple-infused milk", price: "$4.75" },
+                { name: "Cold Brew Noir", desc: "24-hour steep, served over crystal ice", price: "$5.00" }
             ]
         },
         {
-            title: "Pâtisserie",
+            title: "Artisan Pastry",
             items: [
-                { name: "Croissant Beurre", price: "$4.50", desc: "AOC butter, 24 layers" },
-                { name: "Pain au Chocolat", price: "$5.00", desc: "Dark valrhona chocolate" },
-                { name: "Almond Financier", price: "$3.50", desc: "Brown butter cake" },
+                { name: "Truffle Crossiant", desc: "Savory black truffle butter glaze", price: "$6.00" },
+                { name: "Lemon Tart", desc: "Zesty curd, toasted italian meringue", price: "$5.25" },
+                { name: "Pistachio Éclair", desc: "Filled with roasted pistachio cream", price: "$5.50" },
+                { name: "Sourdough Toast", desc: "Cultured butter, sea salt, preserves", price: "$4.00" }
             ]
         }
     ];
@@ -27,39 +29,50 @@ const MenuPreview = () => {
         <section className="section-padding menu-section">
             <div className="container">
                 <div className="menu-header text-center">
-                    <span className="overline">SELECTIONS</span>
-                    <h2>The Menu</h2>
+                    <motion.span
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        className="overline"
+                    >
+                        DISCOVER TASTE
+                    </motion.span>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        Curated Menu
+                    </motion.h2>
                 </div>
 
-                <div className="menu-columns">
-                    {menuCategories.map((category, idx) => (
+                <div className="menu-grid-layout">
+                    {categories.map((cat, idx) => (
                         <motion.div
                             key={idx}
-                            className="menu-category"
-                            initial={{ opacity: 0, y: 20 }}
+                            className="menu-category-card"
+                            initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.2, duration: 0.8 }}
                             viewport={{ once: true }}
                         >
-                            <h3>{category.title}</h3>
-                            <ul className="menu-list">
-                                {category.items.map((item, i) => (
-                                    <li key={i} className="menu-item">
-                                        <div className="menu-item-head">
-                                            <span className="item-name">{item.name}</span>
-                                            <span className="item-line"></span>
-                                            <span className="item-price">{item.price}</span>
+                            <h3 className="category-title">{cat.title}</h3>
+                            <div className="menu-items-container">
+                                {cat.items.map((item, i) => (
+                                    <div key={i} className="menu-item-row">
+                                        <div className="menu-item-info">
+                                            <div className="item-name-fancy">{item.name}</div>
+                                            <div className="item-desc-fancy">{item.desc}</div>
                                         </div>
-                                        <p className="item-desc">{item.desc}</p>
-                                    </li>
+                                        <div className="item-price-fancy">{item.price}</div>
+                                    </div>
                                 ))}
-                            </ul>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
 
                 <div className="text-center" style={{ marginTop: '5rem' }}>
-                    <button className="btn-text">View Full Menu</button>
+                    <Link to="/menu" className="btn-text">View Complete Menu</Link>
                 </div>
             </div>
         </section>

@@ -1,89 +1,192 @@
 .menu-section {
-    background-color: var(--color-bg-alt);
-    color: var(--color-primary);
+    background-color: #241A16;
+    /* Slight variation from main bg */
+    position: relative;
+    padding: 8rem 0;
+}
+
+/* Add a gold border accent to the top */
+.menu-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--color-accent), transparent);
 }
 
 .menu-header {
-    margin-bottom: 5rem;
+    margin-bottom: 6rem;
+    position: relative;
+    z-index: 1;
 }
 
 .menu-header h2 {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
+    color: #E3D5C5;
     margin-top: 1rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
 }
 
-.menu-columns {
-    display: flex;
-    justify-content: center;
-    gap: 8rem;
-    flex-wrap: wrap;
+.menu-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    align-items: start;
 }
 
-.menu-category {
-    flex: 1;
-    min-width: 300px;
-    max-width: 500px;
+.menu-category-card {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 3rem;
+    border: 1px solid rgba(200, 162, 122, 0.1);
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.menu-category h3 {
-    font-size: 1.75rem;
+.menu-category-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(200, 162, 122, 0.3);
+    transform: translateY(-5px);
+}
+
+/* Corner Accents */
+.menu-category-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 30px 30px 0;
+    border-color: transparent var(--color-accent) transparent transparent;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.menu-category-card:hover::after {
+    opacity: 1;
+}
+
+.category-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
     color: var(--color-accent);
-    margin-bottom: 2.5rem;
-    border-bottom: 1px solid rgba(200, 162, 122, 0.2);
-    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
     display: inline-block;
+    width: 100%;
 }
 
-.menu-list {
+.category-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--color-accent);
+    margin: 1rem auto 0;
+}
+
+.menu-items-container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
-.menu-item-head {
+.menu-item-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.menu-item-row:hover {
+    transform: translateX(10px);
+}
+
+.menu-item-info {
+    flex: 1;
+    padding-right: 1rem;
+}
+
+.item-name-fancy {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: #fff;
+    letter-spacing: 0.02em;
     margin-bottom: 0.25rem;
 }
 
-.item-name {
-    font-family: var(--font-heading);
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: #E3D5C5;
-}
-
-.item-line {
-    flex: 1;
-    margin: 0 1rem;
-    border-bottom: 1px dotted rgba(200, 162, 122, 0.3);
-}
-
-.item-price {
+.item-desc-fancy {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
     font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.item-price-fancy {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--color-accent);
     font-weight: 500;
-    color: var(--color-accent);
 }
 
-.item-desc {
-    font-size: 0.9rem;
-    color: #8C705F;
-    font-style: italic;
+/* Dotted leader */
+.menu-item-row::before {
+    content: '';
+    position: absolute;
+    bottom: 0.4rem;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+    z-index: 0;
 }
 
-.btn-text {
-    background: none;
-    border: 1px solid var(--color-accent);
-    color: var(--color-accent);
-    padding: 1rem 3rem;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: all 0.3s;
+.menu-item-info,
+.item-price-fancy {
+    background: #271E1A;
+    /* Match card bg roughly to hide dots behind text */
+    z-index: 1;
+    position: relative;
 }
 
-.btn-text:hover {
-    background: var(--color-accent);
-    color: var(--color-bg);
+.menu-category-card:hover .menu-item-info,
+.menu-category-card:hover .item-price-fancy {
+    background: transparent;
+    /* Trick to handle bg change or just keep it simple */
+}
+
+/* Fix for background matching to hide dots */
+.menu-category-card .menu-item-info,
+.menu-category-card .item-price-fancy {
+    background: #241A16;
+    /* Fallback if transparent issue */
+    /* Actually better to not hide dots, just let them be faint layer below.
+       Let's remove bg masking and just lower dot opacity */
+}
+
+.menu-item-info {
+    background: transparent;
+}
+
+.item-price-fancy {
+    background: transparent;
+}
+
+.menu-item-row::before {
+    opacity: 0.2;
+}
+
+
+@media (max-width: 900px) {
+    .menu-grid-layout {
+        grid-template-columns: 1fr;
+    }
 }
