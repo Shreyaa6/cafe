@@ -1,0 +1,118 @@
+.about-section {
+    background-color: var(--color-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.about-visual {
+    position: relative;
+}
+
+/* Double border frame effect for luxury feeling */
+.image-frame-outer {
+    border: 1px solid rgba(200, 162, 122, 0.2);
+    padding: 20px;
+}
+
+.image-frame-inner {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+}
+
+.image-frame-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(30%) contrast(1.1) brightness(0.8);
+    transition: all 0.7s ease;
+}
+
+.image-frame-inner:hover img {
+    transform: scale(1.05);
+    filter: sepia(0%) contrast(1.0) brightness(1);
+}
+
+.about-narrative {
+    padding-left: 2rem;
+}
+
+.overline {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+}
+
+.about-narrative h2 {
+    font-size: 4rem;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 2rem;
+}
+
+.separator {
+    width: 60px;
+    height: 2px;
+    background-color: var(--color-accent);
+    margin-bottom: 2.5rem;
+}
+
+.about-narrative p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(212, 187, 163, 0.7);
+    margin-bottom: 2rem;
+    max-width: 500px;
+    text-align: justify;
+}
+
+.signature {
+    margin-top: 3rem;
+    font-family: 'Playfair Display', serif;
+    /* or use Heading font */
+}
+
+.signature p {
+    font-family: 'Great Vibes', cursive;
+    /* Optional, fallback to serif */
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin-bottom: 0px;
+}
+
+.signature .role {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(212, 187, 163, 0.5);
+}
+
+@media (max-width: 968px) {
+    .about-wrapper {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .about-narrative {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .about-narrative p {
+        margin: 0 auto 2rem;
+    }
+
+    .separator {
+        margin: 0 auto 2.5rem;
+    }
+}

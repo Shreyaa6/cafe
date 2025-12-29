@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500&display=swap');
+
+:root {
+  /* Ultra Premium Brown Palette */
+  --color-bg: #1A120F;
+  /* Deepest Espresso */
+  --color-bg-alt: #241A16;
+  /* Dark Roast */
+
+  --color-primary: #D4BBA3;
+  /* Champagne/Latte */
+  --color-secondary: #8C705F;
+  /* Muted Cocoa */
+
+  --color-accent: #C8A27A;
+  /* Antique Gold */
+  --color-border: #3E2F26;
+  /* Subtle separation */
+
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
+
+  --shadow-warm: 0 20px 40px -10px rgba(15, 8, 4, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  selection-background-color: var(--color-accent);
+  selection-color: var(--color-bg);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.4s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Utilities */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.section-padding {
+  padding: 10rem 3rem;
+}
+
+.text-gold {
+  color: var(--color-accent);
+}
+
+.text-center {
+  text-align: center;
+}

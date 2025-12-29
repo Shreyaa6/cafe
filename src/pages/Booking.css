@@ -1,0 +1,106 @@
+.booking-page {
+    padding-top: 8rem;
+    /* Nav clear */
+    padding-bottom: 5rem;
+    background-color: var(--color-bg);
+    min-height: 100vh;
+}
+
+.booking-container {
+    max-width: 600px;
+    /* Slim container for form */
+    margin: 0 auto;
+}
+
+.booking-header {
+    margin-bottom: 3rem;
+}
+
+.booking-header h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.booking-header p {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.booking-form {
+    background: var(--color-bg-alt);
+    padding: 2.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    /* Sharp minimal edges */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group label {
+    color: var(--color-accent);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background: transparent;
+    border: 1px solid rgba(200, 162, 122, 0.2);
+    color: var(--color-primary);
+    padding: 0.8rem;
+    font-family: var(--font-body);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--color-accent);
+}
+
+/* Custom select styling override if needed, but default is okay for now */
+select option {
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
+}
+
+/* Date picker color fix - tricky in webkit but basic invert works */
+input[type="date"] {
+    color-scheme: dark;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.3s;
+    margin-top: 1rem;
+}
+
+.btn-submit:hover {
+    background-color: #b58b5e;
+}
