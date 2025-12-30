@@ -4,6 +4,7 @@
     background-color: var(--color-bg);
     position: relative;
     border-top: 1px solid rgba(200, 162, 122, 0.1);
+    overflow: hidden;
 }
 
 .map-wrapper {
@@ -12,12 +13,12 @@
     position: relative;
 }
 
-.map-img {
+.map-iframe {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    opacity: 0.6;
-    filter: sepia(0.2) contrast(1.2) brightness(0.7);
+    border: none;
+    filter: brightness(0.7) sepia(0.4) hue-rotate(10deg) saturate(0.8) contrast(1.1);
+    /* Warm brown/sepia tone to match cafe theme */
 }
 
 /* Gradient overlay to merge map with footer/reviews */
@@ -27,10 +28,21 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, transparent 40%, var(--color-bg) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgba(26, 18, 15, 0.2) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(26, 18, 15, 0.4) 100%
+    );
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
+}
+
+.map-overlay > * {
+    pointer-events: auto;
 }
 
 /* Glassmorphism Card */

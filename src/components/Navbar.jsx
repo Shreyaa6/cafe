@@ -20,7 +20,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', path: '/#top', isHash: true },
-    { name: 'Full Menu', path: '/menu', isHash: false },
+    { name: 'Menu', path: '/menu', isHash: false },
     { name: 'Our Story', path: '/#about', isHash: true },
     { name: 'Book Table', path: '/booking', isHash: false },
   ];
